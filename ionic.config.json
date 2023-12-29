@@ -1,0 +1,7 @@
+{
+  "name": "park-go",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
