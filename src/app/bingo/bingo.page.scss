@@ -1,0 +1,81 @@
+ion-header {
+  --ion-toolbar-background: #f8f8f8; // Example background color for header
+  // Add any additional styles for the header here
+}
+
+ion-content {
+  --ion-safe-area-top: 35px; // Adjust based on your header's height
+  --ion-safe-area-bottom: 35px; // Adjust based on your header's height
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  height: calc(
+    100vh - var(--ion-safe-area-top) - var(--ion-safe-area-bottom)
+  ); // Adjust height to avoid scrolling
+  overflow: hidden; // Prevents any potential scroll
+
+  .bingo-grid {
+    background-color: #fdfdfd; // Off-white background for the entire grid
+    border: 2px solid #ccc; // Solid border for the grid
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Drop shadow for depth
+    padding: 10px; // Padding around the grid
+    border-radius: 10px; // Rounded corners
+
+    ion-row {
+      --ion-grid-column-padding: 0;
+    }
+  }
+}
+
+.bingo-square {
+  background-color: #f8f8f8; // Light square background
+  border: 1px solid #ddd; // Border for each square
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; // Smooth transition for visual effect
+
+  background-size: 20px 20px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); // Inner shadow for depth
+  position: relative;
+  padding-top: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px; // Rounded corners for squares
+
+  .square-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80%;
+    font-size: calc(1vw + 1vh);
+    word-wrap: break-word;
+  }
+  &:hover {
+    background-color: #e0e0e0; // Slight change on hover
+  }
+
+  &.selected {
+    background-color: #4caf50; // Example: a different background color for active state
+    // background-image: url("../assets/selected-pattern.png"); // Or use a special pattern/image
+    color: white; // Change text color for better visibility
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2); // More pronounced shadow for depth
+  }
+}
+
+@media (orientation: landscape) {
+  ion-content {
+    --ion-safe-area-top: 0; // Remove extra top space in landscape
+    height: 100vh; // Full viewport height
+    overflow: hidden; // Prevents any potential scroll
+  }
+
+  .bingo-square {
+    padding-top: calc(100vh / 6); // Adjust padding for landscape orientation
+    // This accounts for 5 rows of squares plus the header height
+
+    .square-content {
+      font-size: calc(1.2vh + 1.2vw); // Adjust font size for landscape
+    }
+  }
+}

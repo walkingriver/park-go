@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ parkName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title>{{ parkName }} </ion-title>
+      <!-- Dynamic park name -->
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-grid class="bingo-grid">
+      @for(row of bingoSquares; track $index) {
+      <ion-row>
+        @for(square of row; track $index) {
+        <ion-col
+          class="bingo-square"
+          [class.selected]="square.selected"
+          (click)="toggleSquare(square)"
+        >
+          <div class="square-content">{{ square.name }}</div>
+        </ion-col>
+        }
+      </ion-row>
+      }
+    </ion-grid>
+  </ion-content>
+</ion-content>
