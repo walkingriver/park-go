@@ -14,24 +14,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-content>
-    <ion-grid class="bingo-grid">
-      @for(row of bingoSquares; track $index) {
-      <ion-row>
-        @for(square of row; track $index) {
-        <ion-col
-          class="bingo-square"
-          [class.selected]="square.selected"
-          (click)="!bingoAchieved && toggleSquare(square)"
-        >
-          <div class="square-content">{{ square.name }}</div>
-        </ion-col>
-        }
-      </ion-row>
+<ion-content>
+  <ion-grid class="bingo-grid">
+    @for(row of bingoSquares; track $index) {
+    <ion-row>
+      @for(square of row; track $index) {
+      <ion-col
+        class="bingo-square"
+        [class.selected]="square.selected"
+        (click)="!bingoAchieved && toggleSquare(square)"
+      >
+        <div class="square-content">{{ square.name }}</div>
+      </ion-col>
       }
-    </ion-grid>
-  </ion-content>
+    </ion-row>
+    }
+  </ion-grid>
 </ion-content>
 
 <ion-alert
