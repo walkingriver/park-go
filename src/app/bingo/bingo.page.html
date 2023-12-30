@@ -1,9 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>{{ parkName }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="resetGame()">
-        <ion-icon slot="start" name="refresh">Refresh</ion-icon>
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -18,7 +23,7 @@
         <ion-col
           class="bingo-square"
           [class.selected]="square.selected"
-          (click)="toggleSquare(square)"
+          (click)="!bingoAchieved && toggleSquare(square)"
         >
           <div class="square-content">{{ square.name }}</div>
         </ion-col>
@@ -28,3 +33,11 @@
     </ion-grid>
   </ion-content>
 </ion-content>
+
+<ion-alert
+  isOpen="{{ bingoAchieved }}"
+  header="Congratulations!"
+  message="You have completed the park!"
+  [buttons]="alertButtons"
+>
+</ion-alert>
