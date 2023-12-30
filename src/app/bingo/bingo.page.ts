@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { BingoCardService } from 'src/app/bingo-card.service';
+import { addIcons } from 'ionicons';
+import { refresh } from 'ionicons/icons';
 
 @Component({
   selector: 'app-bingo',
@@ -18,6 +20,12 @@ export class BingoPage implements OnInit {
   parkName = '';
   bingoSquares: any[][] = [];
 
+  constructor() {
+    addIcons({
+      refresh
+    });
+  }
+
   async ngOnInit() {
     // Assume the data structure is suitable for direct assignment
     // You might need to transform the data based on your specific structure
@@ -27,6 +35,10 @@ export class BingoPage implements OnInit {
 
   toggleSquare(square: any) {
     square.selected = !square.selected; // Assuming each square object has a 'selected' property
+  }
+
+  async resetGame() {
+    this.bingoSquares = await this.bingoCardService.generateRandomCard();
   }
 
 
